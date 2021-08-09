@@ -1,0 +1,42 @@
+1安装Unity 2019.4或更高版本
+
+2克隆 ML-Agents Toolkit 存储库
+git clone --branch release_18 https://github.com/Unity-Technologies/ml-agents.git
+
+3安装com.unity.ml-agentsUnity 包
+
+4安装com.unity.ml-agents.extensionsUnity 包
+
+5安装mlagentsPython 包
+ 5.1安装虚拟环境
+   1.安装python 3.6 or3.8
+   2.安装 Pip（必需）
+    get-pip.py使用命令下载文件 curl https://bootstrap.pypa.io/get-pip.py -o get-pip.py
+    运行以下 python3 get-pip.py
+    使用检查 pip 版本 pip3 -V
+   3WINDOWS设置
+    创建虚拟环境所在的文件夹 md python-envs
+    创建一个名为sample-envexecute 的新环境python -m venv python-envs\sample-env
+    激活环境执行 python-envs\sample-env\Scripts\activate
+    使用升级到最新的 pip 版本 pip install --upgrade pip
+    要停用环境执行deactivate（您可以使用activate上面列出的相同命令重新激活环境）
+  5.2(Windows) 安装 PyTorch
+    激活您的虚拟环境并从命令行运行：
+    pip3 install torch~=1.7.1 -f https://download.pytorch.org/whl/torch_stable.html
+  5.3安装mlagents
+    激活您的虚拟环境并从命令行运行：
+    python -m pip install mlagents==0.27.0
+    请注意，这mlagents将从 PyPi安装，而不是从克隆的存储库安装。如果您正确安装了它，您应该能够运行 mlagents-learn --help，之后您将看到可以与mlagents-learn.
+
+    通过安装mlagents包，setup.py 文件中列出的依赖项 也被安装。其中包括 PyTorch（需要 CPU 支持 AVX）。
+
+    高级：用于开发的本地安装
+    如果您打算对mlagents或进行修改mlagents_envs，您应该从克隆的存储库而不是从 PyPi 安装包。为此，您需要单独安装mlagents和安装mlagents_envs。从存储库的根目录，运行：
+
+    pip3 install torch -f https://download.pytorch.org/whl/torch_stable.html 
+    pip3 install -e ./ml-agents-envs 
+    pip3 install -e ./ml-agents
+    运行带有-e标志的pip将允许您直接更改 Python 文件，并在运行mlagents-learn. 按此顺序安装这些包很重要，因为mlagents包依赖于 mlagents_envs，而按其他顺序安装则将mlagents_envs从 PyPi下载 。
+
+
+
